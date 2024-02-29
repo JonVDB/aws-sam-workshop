@@ -1,0 +1,15 @@
+{
+    "path": "/hello",
+    "httpMethod": "GET",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "queryStringParameters": {
+    },
+    "requestContext": {
+      "identity": {
+        "sourceIp": "127.0.0.1"
+      }
+    }
+  }
+  

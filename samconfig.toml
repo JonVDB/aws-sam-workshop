@@ -1,0 +1,23 @@
+# More information about the configuration file can be found here:
+# https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
+
+version = 0.1
+
+[default.global.parameters]
+stack_name = "aws-sam-workshop-hello-world"
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.validate.parameters]
+lint = true
+
+[default.deploy.parameters]
+capabilities = "CAPABILITY_IAM"
+region = "eu-west-1"
+resolve_s3 = true
+confirm_changeset = true
+
+[default.package.parameters]
+resolve_s3 = true

@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'AWS SAM Workshop :)'
+
+Resources:
+  HelloWorldFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: code/HelloWorld/
+      Handler: app.lambdaHandler
+      Runtime: nodejs20.x
+      MemorySize: 512
+      Architectures:
+      - "arm64"
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+            RestApiId: !Ref API
+  
+  API:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: TST
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'content-type'"
+        AllowOrigin: "'*'"
+        AllowCredentials: false
+
+Outputs:
+  HelloWorldApi:
+    Description: 'API Gateway endpoint URL for Hello World Lambda Function'
+    Value: !Sub "https://${API}.execute-api.${AWS::Region}.amazonaws.com/TST/hello/"
